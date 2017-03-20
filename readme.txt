@@ -1,0 +1,3 @@
+1.在index.html中给登录加了验证码进行防御
+2.index1.html页面js做了referrer判断
+3.在提交时也做了特殊字符的转换

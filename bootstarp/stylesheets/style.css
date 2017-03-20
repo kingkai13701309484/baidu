@@ -1,0 +1,214 @@
+/*登录页里的样式*/
+
+.margin {
+    margin: 40px 0 20px 0;
+}
+
+.margin1 {
+    margin: 20px 0;
+    color: #999;
+}
+
+.im img {
+    height: 18px;
+}
+
+
+/*首页里的样式*/
+
+.head-bg {
+    background: #0070c5 url(../images/in_fo.png) right top no-repeat;
+    height: 60px;
+    border-bottom: #005ea3 solid 2px;
+    color: #fff;
+    line-height: 60px;
+    font-size: 16px;
+}
+
+.head-bg img {
+    height: 53px;
+}
+/*左边导航部分*/
+.nav{
+	padding-right:0!important;
+	
+}
+.hid{
+	overflow: hidden;
+}
+.nav-outer li {
+    background: #003663;
+    /*height: 80px;*/
+    border-bottom: #003d70 solid 1px;
+    line-height: 25px;
+    text-align: center;
+    color: #eee;
+    font-size: 14px;
+    list-style: none;
+}
+
+.nav-outer li img {
+    height: 20px;
+}
+
+.nav-outer {
+    padding: 0;
+    margin: 0;
+   background: #003663;
+   padding-bottom: 9999px;
+   margin-bottom: -9999px;
+}
+
+.nav-outer li a {
+    color: #fff;
+    padding: 15px 0;
+    display: block;
+}
+
+.nav-outer li a:hover {
+    background: #2fad5b;
+    display: block;
+    padding: 15px 0;
+    text-decoration: none;
+}
+.hover{
+	background: #2fad5b;
+}
+/*导航里面的子导航*/
+.nav-in {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-in li {
+    border: 0;
+    list-style: none;
+    background: #00213C;
+}
+
+.nav-in li a {
+    color: #fff;
+    padding: 15px 0;
+    display: block;
+}
+.nav-in li a:hover{
+	background: none;
+	color:#2fad5b; 
+}
+.hover-in{
+	color:#2fad5b!important;
+}
+/*搜索一行的样式*/
+.content-top{
+	height: 82px;
+	border-bottom: #ccc solid 1px;
+	padding: 0;
+	line-height: 82px;
+	font-size: 14px;
+	color: #666;
+}
+.content-l img{
+	height: 18px;
+	margin:auto 10px auto 20px;
+}
+
+.content-r img{
+	height: 18px;
+}
+.content-r{
+	padding:0!important;
+	margin-right:0!important;
+}
+/*表格标题样式*/
+.content-c{
+	font-size: 16px;
+	font-weight:bold;
+	padding-left: 40px!important;
+	margin-top: 52px;
+}
+.but img{
+	height: 16px;
+	padding-right: 4px;
+}
+.but{
+	margin-top: 40px;
+	padding: 0!important;
+}
+/*表格内容样式*/
+.foot{
+	padding: 20px 20px 0 40px!important;
+}
+.foot img{
+	height: 22px;
+}
+.foot table td{
+	color: #666;
+}
+
+@media screen and (max-width: 991px){
+	.ma{
+		padding:0 20px;
+	}
+	.ma1{
+		width: 100%;
+		padding: 0 20px;
+	}
+	.nav-outer{
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+	.content-r{
+		margin: 0 20px;
+	}
+	.content-c{
+		padding-top: 30px;
+	}
+	.but{
+		margin:12px 0 0 40px;
+	}
+}
+@media screen and (max-width: 767px){
+	.content-r{
+		margin: 20px 0 0 20px;
+		padding-right: 20px!important;
+	}
+}
+.ma1 a:hover{
+	text-decoration: none;
+}
+/*表格样式*/
+body{
+	padding: 20px;
+}
+body a:hover{
+	cursor: pointer;
+}
+.hide{
+	/*display: none;*/
+}
+.slide,.slide1,.slide2{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background: #fff;
+	box-shadow: 0 2px 6px #ccc;
+	padding: 20px;
+	display: none;
+/*	max-width: 1000px;*/
+}
+.form{
+	margin: 0 auto;
+}
+/*退出样式*/
+.quit{
+	margin-bottom: 10px;
+}
+/*tokin随机数*/
+
+
+
+
+
+
+

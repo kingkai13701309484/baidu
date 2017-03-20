@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>bootstrap</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <!--[if IE]>
+        <script src="js/html5.js"></script>
+    <![endif]-->
+    <!--[if it IE 9]>
+        <script src="js/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+
+ <!-- onload="createCode()" -->
+<body>
+<!-- <form action="index.php" method="post"> -->
+    <div class="container-fluid">
+        <div><img src="images/bg.png" class="img-responsive" alt="Responsive image"></div>
+        <div class="row margin ma">
+            <div class="col-md-4 input-group col-md-offset-4">
+                <span class="input-group-addon im"><img src="images/user.png"></span>
+                <input type="text" class="form-control" placeholder="用户名是king" id="username">
+            </div>
+        </div>
+        <div class="row ma">
+            <div class="col-md-4 input-group col-md-offset-4">
+                <span class="input-group-addon im"><img src="images/key.png"></span>
+                <input type="text" class="form-control" placeholder="密码是123456" id="password">
+            </div>
+        </div>
+
+<!-- 验证码 -->
+<!--         <div class="row ma" style="margin-top:20px">
+            <div class="col-md-3 input-group col-md-offset-4">
+                <input type="email" class="form-control" placeholder="请输入下方验证码" id="inputCode">
+            </div>
+        </div>
+        <div class="row ma" style="margin-top:10px;">
+            <div class="col-md-2 input-group col-md-offset-4" id="checkCode" onclick="createCode()" style="height:30px; cursor:pointer;">
+                
+            </div>
+        </div> -->
+        <div class="row ma" style="margin-top:20px;">
+            <div class="col-md-4 input-group col-md-offset-4" id="checkCode" style="height:30px; cursor:pointer;">
+                     <!-- method="post" action="checkcode.php" -->
+                    <form id="form1" name="form1"> 
+                      <label for="code">验证码：</label>
+                      <input type="text" name="code" id="textfield" />
+                      <img id="imgcode" src="VerifyCode.php" alt="验证码" />
+                      <a href="javascript:refresh_code()">看不清？换一个</a>
+                      <!-- <input type="submit" name="button" id="button" value="提交" /> -->
+                    </form>
+            </div>
+        </div>
+        
+        <div class="row ma">
+            <div class="col-md-4 input-group col-md-offset-4">
+                <div class="form-group margin1">
+                    <div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> 记住我
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row ma1">
+                <div class="col-md-4 input-group col-md-offset-4">
+                 <!-- href="index1.html" target="blank" -->
+                    <a>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--     </form> -->
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        // 随机数结果声明的变量
+        // var result='';
+
+        // php验证码
+        $("#imgcode").click(function(){
+            refresh_code();
+        });
+         function refresh_code()
+         {
+          form1.imgcode.src="verifycode.php?a="+Math.random();
+         }
+
+        $("#btn").click(function(e){
+            // validateCode();
+
+            // 随机数调用的代码
+            // result='';
+            // random();
+            // console.log(result);
+
+
+
+            $.ajax({
+                url:"index1.php",
+                type:"post",
+                dataType:"json",
+                data:{
+                    username:$("#username").val(),
+                    password:$("#password").val(),
+                    textfield:$("#textfield").val()
+                },
+                success:function(data){
+                    if(data.msg=="登录成功"){
+                        window.location.href="./index1.html";
+                    }else{
+                            if($("#username").val()==""&&$("#password").val()==""&&$("#textfield").val()==""){
+                                alert("请输入信息");
+                            }
+                            else if($("#username").val()==""&&$("#password").val()==""){
+                                alert("请输入用户名和密码");
+                            } 
+                            else if($("#username").val()==""&&$("#textfield").val()==""){
+                                alert("请输入用户名和验证码");
+                            }
+                            else if($("#textfield").val()==""&&$("#password").val()==""){
+                                alert("请输入密码和验证码");
+                            }
+                            else if($("#textfield").val()==""){
+                                alert("请输入验证码");
+                            }
+                            else if($("#password").val()==""){
+                                alert("请输入密码");
+                            }
+                            else if($("#username").val()==""){
+                                alert("请输入用户名");
+                            }
+                            else{
+                                alert(data.msg);
+                            }
+                    }
+                },
+            });          
+        });
+
+
+        // 随机数
+        // function random(){
+        //     var randomLength=32;
+        //     var randomNum=new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+        //               'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        //               'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        //     for(var y=0;y<randomLength;y++){
+        //         var charNum = Math.floor(Math.random() * 52);
+        //         result+=randomNum[charNum];
+        //     }
+        // }    
+        // random();
+        // console.log(result);
+
+        // 验证码
+        // function createCode() 
+        //     {
+        //          code = "";
+        //          var codeLength = 6; //验证码的长度
+        //          var checkCode = document.getElementById("checkCode");
+        //          var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+        //               'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        //               'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //所有候选组成验证码的字符，当然也可以用中文的
+        //         for(var i = 0; i < codeLength; i++) 
+        //              {
+        //                  var charNum = Math.floor(Math.random() * 52);
+        //                  code += codeChars[charNum];
+        //              }
+        //         if(checkCode) 
+        //              {
+        //                 //  checkCode.className = "code";
+        //                  checkCode.innerHTML = code;
+        //              }
+        //     }
+        //     function validateCode() 
+        //     {
+        //          var inputCode=document.getElementById("inputCode").value;
+        //          if(inputCode.length <= 0) 
+        //              {
+        //              alert("请输入验证码！");
+        //              }
+        //          else if(inputCode.toUpperCase() != code.toUpperCase()) 
+        //              {
+        //                alert("验证码输入有误！");
+        //                createCode();
+        //              }
+        //          else 
+        //              {
+        //                 $.ajax({
+        //                     url:"index1.php",
+        //                     type:"get",
+        //                     dataType:"json",
+        //                     data:{
+        //                         username:$("#username").val(),
+        //                         password:$("#password").val()
+        //                     },
+        //                     success:function(data){
+        //                         //alert(data.msg);
+
+        //                         if(data.msg=="登录成功"){
+        //                             if(document.referrer)
+        //                             {
+        //                                 window.location.href="./index1.html";
+        //                             }
+        //                         }else{
+        //                             alert("您输入的用户名或密码错误");
+        //                         }
+        //                     },
+        //                 }); 
+        //              }    
+        //     } 
+            
+    </script>
+</body>
+
+</html>

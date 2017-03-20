@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>百度一下，你就知道</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/neat.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <!--[if IE]>
+    	<script src="js/html5.js"></script>
+    <![endif]-->
+    <!--[if it IE 9]>
+        <script src="js/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<!-- 头部 -->
+    <header>
+    <!-- 头部左边 -->
+        <div class="header_l">
+            <span class="header_l_l"></span>
+            <span class="header_l_r"></span>
+        </div>
+        <!-- 头部右边 -->
+        <div class="header_r">
+            <span class="header_r_l"></span>
+            <span class="header_r_r"></span>
+        </div>
+    </header>
+    <!-- 导航 -->
+    <nav>
+        <ul>
+            <li class="li_hover" id="li_hover">百家</li>
+            <li class="ins">本地</li>
+        </ul>
+    </nav>
+    <!-- 内容 -->
+
+    <article class="show">
+    
+    <!-- 最外面的盒子 -->
+       <!--  <div class="articles"> -->
+        <!-- 图片内容 -->
+            <!-- <div class="articles_l">
+                <img src="images/img.jpg">
+            </div> -->
+            <!-- 图片右边信息 -->
+            <!-- <div class="articles_r">
+                <p class="articles_r_t">美国政府继续紧盯中兴，并可能剑指华为</p>
+                <p class="articles_r_b">
+                    <span class="articles_r_b_l">6小时前</span>
+                    <span class="articles_r_b_r">华为</span>
+                </p>
+            </div>
+            <div class="clears"></div>
+        </div>        -->
+
+    </article>
+
+    <div class="in"></div>
+
+    <!-- 底部 -->
+ <!--    <footer></footer> -->
+<!--     <div class="more">
+        <input type="submit" class="more1" value="点击加载更多" />
+    </div>
+ -->
+
+
+
+
+
+
+   <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+   <script type="text/javascript">
+   $(document).ready(function(){
+
+// 自执行一次百家的数据
+(function(){
+    change1();
+}())
+// 判断相对应的数据，进行相对应的显示
+    function tabData(e){
+        var str=e;
+        switch(str){
+            case "百家":
+            return "1";
+            break;
+            case "本地":
+            return "2";
+            break;
+            default:break;
+        }
+    }
+    var a;
+    // 点击本地和百家tab切换
+    $("nav li").each(function(index){
+        $(this).click(function(){
+            $(".show").removeClass("show");
+            $(this).parents("nav").nextAll().eq(index).addClass("show");
+            $(".li_hover").removeClass("li_hover");
+            $(this).addClass("li_hover");
+            a=tabData($(this).text());
+            change();
+            $(".articles").remove();
+        });
+    });
+// var num=0;
+// $(".more1").click(function(){
+//     // num++;
+//     change2();
+//     $(".articles").remove();
+// });
+
+
+
+
+    function change(){
+        //console.log(a);
+        // 添加数据
+       $.ajax({
+            url:"mysql.php",
+            type:"post",
+            dataType:"json",
+            data:{
+                navdata:a
+                //num:num
+            },
+            success:function(data){
+                $(data).each(function(){
+                    //console.log(this.newsimg);
+                    var dataThis=this;
+                    var articles=$("<div></div>").appendTo("article").addClass("articles"),
+                   articles_l=$("<div></div>").appendTo(articles).addClass("articles_l"),
+                   articles_r=$("<div></div>").appendTo(articles).addClass("articles_r");
+                   
+                   $("<div></div>").appendTo(articles).addClass("clears");
+                   $("<img>").appendTo(articles_l).attr({"src":this.newsimg});
+                   $("<p></p>").appendTo(articles_r).addClass("articles_r_t").text(dataThis.newstitle);
+                   var articles_r_b= $("<p></p>").appendTo(articles_r).addClass("articles_r_b");
+                   $("<span></span>").appendTo(articles_r_b).addClass("articles_r_b_l").text(dataThis.newstext);
+                   $("<span></span>").appendTo(articles_r_b).addClass("articles_r_b_r").text(dataThis.newsdate);
+                });
+            }
+       });
+    }
+  //百家的数据，自执行时使用 
+    function change1(){
+        //console.log(a);
+        // 添加数据
+       $.ajax({
+            url:"mysql.php",
+            type:"post",
+            dataType:"json",
+            data:{
+                navdata:1
+            },
+            success:function(data){
+                $(data).each(function(){
+                    //console.log(this.newsimg);
+                    var dataThis=this;
+                    var articles=$("<div></div>").appendTo("article").addClass("articles"),
+                   articles_l=$("<div></div>").appendTo(articles).addClass("articles_l"),
+                   articles_r=$("<div></div>").appendTo(articles).addClass("articles_r");
+                   
+                   $("<div></div>").appendTo(articles).addClass("clears");
+                   $("<img>").appendTo(articles_l).attr({"src":this.newsimg});
+                   $("<p></p>").appendTo(articles_r).addClass("articles_r_t").text(dataThis.newstitle);
+                   var articles_r_b= $("<p></p>").appendTo(articles_r).addClass("articles_r_b");
+                   $("<span></span>").appendTo(articles_r_b).addClass("articles_r_b_l").text(dataThis.newstext);
+                   $("<span></span>").appendTo(articles_r_b).addClass("articles_r_b_r").text(dataThis.newsdate);
+                });
+            }
+       });
+    }
+
+
+
+
+    // 点击本地加载数据
+    // $(".ins").click(function(){
+    // // 添加数据
+    //    $.ajax({
+    //         url:"mysql.php",
+    //         type:"post",
+    //         dataType:"json",
+    //         success:function(data){
+    //             $(data).each(function(){
+    //                 console.log(this.newsimg);
+    //                 var dataThis=this;
+    //                 var articles=$("<div></div>").appendTo($(".in")).addClass("articles"),
+    //                articles_l=$("<div></div>").appendTo(articles).addClass("articles_l"),
+    //                articles_r=$("<div></div>").appendTo(articles).addClass("articles_r");
+                   
+    //                $("<div></div>").appendTo(articles).addClass("clears");
+    //                $("<img>").appendTo(articles_l).attr({"src":this.newsimg});
+    //                $("<p></p>").appendTo(articles_r).addClass("articles_r_t").text(dataThis.newstitle);
+    //                var articles_r_b= $("<p></p>").appendTo(articles_r).addClass("articles_r_b");
+    //                $("<span></span>").appendTo(articles_r_b).addClass("articles_r_b_l").text(dataThis.newstext);
+    //                $("<span></span>").appendTo(articles_r_b).addClass("articles_r_b_r").text(dataThis.newsdate);
+    //             });
+    //         }
+    //    });
+    // });
+
+});
+   </script>
+</body>
+
+</html>

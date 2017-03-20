@@ -1,0 +1,148 @@
+.clears{
+	clear: both;
+}
+.show{
+	display: block;
+}
+/*头部*/
+header{
+	height: 44px;
+	background:#3E98F1 url(../images/logo.png) center center no-repeat;
+	background-size: 77px auto;
+	border-bottom: 1px solid;
+	border-bottom-color: rgba(255,255,255,.5);
+}
+header span{
+	height: 44px;
+	width: 44px;
+}
+/*头部左边*/
+.header_l,.header_l_l,.header_l_r,.header_r_l,.header_r_r{
+	float: left;
+}
+.header_l_l{
+	background:url(../images/icon.png) -6px 3px no-repeat;
+	background-size: 44px auto;
+}
+.header_l_r{
+	background:url(../images/icon.png) -6px -511px no-repeat;
+	background-size: 44px auto;
+}
+/*头部右边*/
+.header_r{
+	float: right;
+}
+.header_r_l{
+	background:url(../images/icon.png) 4px -179px no-repeat;
+	background-size: 44px auto;
+}
+.header_r_r{
+	background:url(../images/icon.png) 4px -118px no-repeat;
+	background-size: 44px auto;
+}
+/*导航*/
+nav{
+	height: 36px;
+	background: #3E98F1;
+}
+nav ul li{
+	width: 20%;
+	height: 33px;
+	font-size: 16px;
+	color: #fff;
+	float: left;
+	line-height: 36px;
+	text-align: center;
+	margin: 0 15%;
+	cursor: pointer;
+}
+.li_hover{
+	border-bottom: 1px solid #fff;
+}
+
+/*内容*/
+.articles{
+	margin:0 10px;
+	padding: 10px 0;
+	border-bottom: 1px solid #eee;
+}
+/*图片内容*/
+.articles_l{
+	height: 68px;
+	float: left;
+	margin-right: 10px;
+}
+.articles_l img{
+	height: 68px;
+	width: 113px;
+}
+/*图片右面信息*/
+.articles_r{
+	width: 100%;
+}
+.articles_r_t{
+	font-size: 16px;
+	color: #999;
+	line-height: 20px;
+}
+.articles_r_b{
+	font-size: 12px;
+	margin-top: 2px;
+	height: 26px;
+	line-height: 26px;
+}
+.articles_r_b_l{
+	float: left;
+	color: #ccc;
+}
+.articles_r_b_r{
+	float: right;
+	color: #3E98F1;
+	border: 1px solid #eee;
+	padding:0 5px;
+	border-radius: 5px;
+	line-height: 20px;
+}
+/*article{
+	display: none;
+}*/
+/*底部*/
+.more,.mores{
+	width: 100%;
+}
+.more1,.mores1{
+	width: 80%;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	margin: 20px auto;
+	border:1px solid #3E98F6;
+	color: #3E98F6;
+	background: #fff;
+	display: block;
+	border-radius: 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
